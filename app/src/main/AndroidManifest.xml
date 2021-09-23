@@ -11,7 +11,10 @@
         android:theme="@style/Theme.HoneyStore">
         <activity
             android:name=".activity.ProfileActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+
+            />
         <activity
             android:name=".activity.ContactActivity"
             android:exported="true" />
