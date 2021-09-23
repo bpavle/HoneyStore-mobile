@@ -8,14 +8,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.honeystore.R;
@@ -68,8 +72,27 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.cart:
+                Intent i = new Intent(this,CartActivity.class);
+                this.startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+         inflater.inflate(R.menu.options_menu, menu);
+        // open new activity on click
+        return true;
+    }
     public void packProducts(ArrayList<Product> list) {
         //ArrayList<Product> list = FakeApi.getProducts();
         LinearLayout chairpersonScrollView = (LinearLayout) findViewById(R.id.productsScrollView);

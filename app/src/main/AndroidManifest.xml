@@ -10,11 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HoneyStore">
         <activity
+            android:name=".activity.CartActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ProfileActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"
-
-            />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.ContactActivity"
             android:exported="true" />

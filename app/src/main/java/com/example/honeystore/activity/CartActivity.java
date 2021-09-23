@@ -1,29 +1,31 @@
 package com.example.honeystore.activity;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
+import static com.example.honeystore.api.FakeApi.getProducts;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.honeystore.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class AboutActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_cart);
+
+
+
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
-        bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        bottomNavigationView.getMenu().getItem(0).setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
             @Override
@@ -31,23 +33,23 @@ public class AboutActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.ic_about:
-//                        Intent intent2 = new Intent(AboutActivity.this, AboutActivity.class);
-//                        intent2.setFlags(FLAG_ACTIVITY_NO_ANIMATION);
-//                        startActivity(intent2);
+                        Intent intent2 = new Intent(CartActivity.this, AboutActivity.class);
+                        intent2.setFlags(FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent2);
                         break;
                     case R.id.ic_contact:
-                        Intent intent3 = new Intent(AboutActivity.this, ContactActivity.class);
+                        Intent intent3 = new Intent(CartActivity.this, ContactActivity.class);
                         intent3.setFlags(FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intent3);
                         break;
                     case R.id.ic_profile:
-                        Intent intent4 = new Intent(AboutActivity.this, ProfileActivity.class);
+                        Intent intent4 = new Intent(CartActivity.this, ProfileActivity.class);
                         intent4.setFlags(FLAG_ACTIVITY_NO_ANIMATION);
                         //intent4.setFlags(Integer.parseInt(intent4.ACTION_SEARCH));
                         startActivity(intent4);
                         break;
                     case R.id.ic_home:
-                        Intent intent0 = new Intent(AboutActivity.this,MainActivity.class);
+                       Intent intent0 = new Intent(CartActivity.this,MainActivity.class);
                         intent0.setFlags(FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intent0);
                         break;
@@ -57,23 +59,5 @@ public class AboutActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.cart:
-                Intent i = new Intent(this,CartActivity.class);
-                this.startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_menu, menu);
-        // open new activity on click
-        return true;
     }
 }
