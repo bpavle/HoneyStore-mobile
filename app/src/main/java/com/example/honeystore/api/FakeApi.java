@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 
 import com.example.honeystore.R;
 import com.example.honeystore.data.Product;
+import com.example.honeystore.data.User;
 
 import java.util.ArrayList;
 
@@ -22,5 +23,10 @@ public class FakeApi {
         list.add(new Product(9,"Tegla","Prazna tegla za med",100,"din",R.drawable.tegla));
         list.add(new Product(10,"Tegla","Prazna tegla za med",100,"din",R.drawable.tegla));
         return list;
+    }
+
+    public static User getUserById(int id){
+        User user = new User(1,"ROLE_CUSTOMER","Pera","Peric","pera@mail.com","password","0114556","Janka Jankovica 6");
+        return user;
     }
 }
