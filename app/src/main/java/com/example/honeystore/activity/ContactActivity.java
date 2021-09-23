@@ -10,14 +10,19 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.honeystore.R;
+import com.google.android.gms.maps.MapView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ContactActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+
+
+        //MapView mapView =(MapView) findViewById(R.id.mapView);
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
