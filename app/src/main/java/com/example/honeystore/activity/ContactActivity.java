@@ -10,11 +10,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.honeystore.R;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ContactActivity extends AppCompatActivity {
-
+    private static final LatLng GREENBELT1 = new LatLng(14.553048, 121.020030);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +26,13 @@ public class ContactActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact);
 
 
-        //MapView mapView =(MapView) findViewById(R.id.mapView);
+        MapView mapView =(MapView) findViewById(R.id.mapView);
+
+        ((MapView) findViewById(R.id.mapView)).getMapAsync(new OnMapReadyCallback() {
+            @Override public void onMapReady(GoogleMap googleMap) {
+               googleMap.addMarker(new MarkerOptions().position(GREENBELT1).title("Mesto").snippet("AA"));
+            }
+        });
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
