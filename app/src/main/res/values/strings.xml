@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HoneyStore</string>
+    <string name="home">Home</string>
+    <string name="about">About</string>
+    <string name="contact">Contact</string>
+    <string name="profile">Profile</string>
+
+</resources>
