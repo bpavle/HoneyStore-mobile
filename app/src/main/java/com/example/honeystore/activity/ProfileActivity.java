@@ -10,23 +10,58 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.honeystore.R;
+import com.example.honeystore.data.User;
 import com.example.honeystore.fakedb.Storage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
     boolean isLoggedIn;
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         isLoggedIn = ((Storage)this.getApplication()).isLoggedIn();
         if(!((Storage)this.getApplication()).isLoggedIn()){
             Intent i = new Intent(ProfileActivity.this,LoginActivity.class);
             startActivity(i);
+            return;
         }
+        user = ((Storage)this.getApplication()).getUser();
+
+      ((EditText)findViewById(R.id.Name)).setText(user.getName());
+         ((EditText)findViewById(R.id.Surname)).setText(user.getSurname());
+         ((EditText)findViewById(R.id.Phone)).setText(user.getPhone());
+         ((EditText)findViewById(R.id.Address)).setText(user.getAddress());
+         ((EditText)findViewById(R.id.Email)).setText(user.getEmail());
+         ((EditText)findViewById(R.id.Password)).setText(user.getPassword());
+
+
+
+         findViewById(R.id.changeDataButton).setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+                 if (!((EditText)findViewById(R.id.Password)).getText().toString().equals(((EditText)findViewById(R.id.Confirm)).getText().toString())){
+                     Toast.makeText(ProfileActivity.this, "Passwords did not match", Toast.LENGTH_SHORT).show();
+                 return;
+                 }
+                 user.setName(((EditText)findViewById(R.id.Name)).getText().toString());
+                 user.setSurname(((EditText)findViewById(R.id.Surname)).getText().toString());
+                 user.setPhone(((EditText)findViewById(R.id.Phone)).getText().toString());
+                 user.setAddress(((EditText)findViewById(R.id.Address)).getText().toString());
+                 user.setEmail(((EditText)findViewById(R.id.Email)).getText().toString());
+                 user.setPassword(((EditText)findViewById(R.id.Password)).getText().toString());
+                 Toast.makeText(ProfileActivity.this, "Changes successful", Toast.LENGTH_SHORT).show();
+
+             }
+         });
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);

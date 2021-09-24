@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HoneyStore">
         <activity
+            android:name=".activity.RegistrationActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ProductDetailsActivity"
             android:exported="true" />
         <activity

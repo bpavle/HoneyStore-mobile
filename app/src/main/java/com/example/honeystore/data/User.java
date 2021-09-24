@@ -9,7 +9,7 @@ public class User {
 //    password: "password",
 //    phone: "0688443165",
 //    address: "Ulica 16 sprat 2",
-
+static public int lastId=0;
     int userId;
     String role;
     String name;
@@ -20,7 +20,17 @@ public class User {
     String address;
 
     public User(int userId, String role, String name, String surname, String email, String password, String phone, String address) {
-        this.userId = userId;
+        this.userId = lastId++;
+        this.role = role;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+    }
+    public User(String role, String name, String surname, String email, String password, String phone, String address) {
+        this.userId = lastId++;
         this.role = role;
         this.name = name;
         this.surname = surname;
@@ -92,5 +102,19 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", role='" + role + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

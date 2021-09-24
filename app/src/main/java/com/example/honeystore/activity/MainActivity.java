@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             ((ImageView) cl.findViewById(R.id.productImageView)).setImageResource(p.getImage());
             ((TextView) cl.findViewById(R.id.productLabel)).setText(p.getLabel());
             ((TextView) cl.findViewById(R.id.productPrice)).setText(Double.toString(p.getPrice()));
-            cl.findViewById(R.id.imageViewMore).setOnClickListener(new View.OnClickListener() {
+            cl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     System.out.println("Clicked on product with id: "+ p.getId());

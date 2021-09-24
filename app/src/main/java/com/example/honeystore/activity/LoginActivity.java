@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.honeystore.R;
+import com.example.honeystore.api.FakeApi;
+import com.example.honeystore.data.User;
 import com.example.honeystore.fakedb.Storage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,6 +29,17 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
+        findViewById(R.id.registerTextView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.getMenu().setGroupCheckable(0, false, true);
@@ -70,7 +83,12 @@ public class LoginActivity extends AppCompatActivity {
     public void login(View v){
         String email = ((EditText)findViewById(R.id.emailTextInputEditText)).getText().toString();
         String password = ((EditText)findViewById(R.id.passwordTextInputEditText)).getText().toString();
-        ((Storage) this.getApplication()).setUser(logInUser(email,password));
+        User user = FakeApi.logInUser(email,password);
+         if (user==null){
+             Toast.makeText(this, "Invalid mail or password", Toast.LENGTH_SHORT).show();
+             return;
+         }
+        ((Storage) this.getApplication()).setUser(user);
         ((Storage) this.getApplication()).setLoggedIn(true);
         Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(LoginActivity.this,MainActivity.class);

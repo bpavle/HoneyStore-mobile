@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ProfileActivity">
+    tools:context=".activity.RegistrationActivity">
+
 
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Profile"
+        android:text="Registration"
         android:textAlignment="center"
         android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Name"
+                android:id="@+id/Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -61,7 +62,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Surname"
+                android:id="@+id/Surname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -79,7 +80,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Phone"
+                android:id="@+id/Phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -97,7 +98,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Address"
+                android:id="@+id/Address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -115,7 +116,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Email"
+                android:id="@+id/Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -133,7 +134,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Password"
+                android:id="@+id/Password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -151,20 +152,19 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Confirm"
+                android:id="@+id/Confirm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/changeDataButton"
+                android:id="@+id/RegistrationButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Izmeni podatke"
+                android:text="Register"
 
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/confirmPasswordEditText" />
+                 />
 
         </LinearLayout>
     </ScrollView>

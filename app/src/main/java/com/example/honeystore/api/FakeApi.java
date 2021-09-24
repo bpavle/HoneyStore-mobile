@@ -8,6 +8,7 @@ import com.example.honeystore.data.User;
 import com.example.honeystore.fakedb.Storage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FakeApi {
 
@@ -33,13 +34,26 @@ public class FakeApi {
 
     public static User logInUser(String email, String password){
             //fake check if username and password exist and return user which mach credentials
+        for(User user : Storage.users){
+            if(email.equals(user.getEmail()) && password.equals(user.getPassword()) ){
+                return user;
+            }
+        }
 
-        User user = new User(1,"ROLE_CUSTOMER","Kupoje","Kupovic","kupac@mail.com","password","82374893274","Glavna ulica broj 7");
-
-        return user;
+        return null;
     }
 
-    public static void registerUser(User u){
+    public static boolean registerUser(User u){
+
+        for(User user : Storage.users){
+            if((u.getEmail()).equals(user.getEmail())){
+                return false;
+            }
+        }
+
         Storage.users.add(u);
+        System.out.println(Arrays.toString(Storage.users.toArray()));
+        return true;
+
     }
 }
