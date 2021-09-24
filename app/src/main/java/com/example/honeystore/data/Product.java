@@ -2,7 +2,9 @@ package com.example.honeystore.data;
 
 import android.widget.ImageView;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
 //how to add image here
     int id;
     String label;

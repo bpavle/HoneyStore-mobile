@@ -1,17 +1,57 @@
 package com.example.honeystore.fakedb;
 
+import android.app.Application;
+
 import com.example.honeystore.data.ExtendedProduct;
+import com.example.honeystore.data.Product;
 import com.example.honeystore.data.User;
 
 import java.util.ArrayList;
 
-public class Storage {
-    User user;
-    ArrayList<ExtendedProduct> cart;
+/**
+ * This is global storage for the application
+ *
+ *
+ * Usage
+ * // set values like so
+ * ((Storage) this.getApplication()).setSomeVariable("foo");
+ *
+ * // get values like so
+ * String s = ((MyApplication) this.getApplication()).getSomeVariable();
+ */
+public class Storage extends Application {
+    User user = null;
+    boolean isLoggedIn = false;
+    ArrayList<ExtendedProduct> cart = new ArrayList<>();
+    public static ArrayList<User> users = new ArrayList<>();
 
-    public Storage(User user, ArrayList<ExtendedProduct> cart) {
-        this.user = user;
-        this.cart = cart;
+    static  public void allUsers(){
+        users.add((new User(1,
+                "ROLE_CUSTOMER",
+                "Kupoje",
+                "Kupic",
+                "kupac@mail.com",
+                "password",
+                "82937498234",
+                "Milentija Popovica 2")));
+         users.add((new User(1,
+                 "ROLE_CUSTOMER",
+                 "Kupoje",
+                 "Kupic",
+                 "kupac@mail.com",
+                 "password",
+                 "82937498234",
+                 "Milentija Popovica 2")));
+
+     }
+
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
     }
 
     public User getUser() {
@@ -26,7 +66,24 @@ public class Storage {
         return cart;
     }
 
+    public void addToCart(ExtendedProduct ep ){
+        cart.add(ep);
+    }
+
+
+    public void unsetCart(){
+        cart.clear();
+    }
     public void setCart(ArrayList<ExtendedProduct> cart) {
         this.cart = cart;
+    }
+
+    public int countProductsWithId(int id){
+        int count=0;
+
+        for (ExtendedProduct p : cart){
+            if (p.getId() == id) count++;
+        }
+        return count;
     }
 }

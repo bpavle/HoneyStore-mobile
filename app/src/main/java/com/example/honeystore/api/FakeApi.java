@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import com.example.honeystore.R;
 import com.example.honeystore.data.Product;
 import com.example.honeystore.data.User;
+import com.example.honeystore.fakedb.Storage;
 
 import java.util.ArrayList;
 
@@ -28,5 +29,17 @@ public class FakeApi {
     public static User getUserById(int id){
         User user = new User(1,"ROLE_CUSTOMER","Pera","Peric","pera@mail.com","password","0114556","Janka Jankovica 6");
         return user;
+    }
+
+    public static User logInUser(String email, String password){
+            //fake check if username and password exist and return user which mach credentials
+
+        User user = new User(1,"ROLE_CUSTOMER","Kupoje","Kupovic","kupac@mail.com","password","82374893274","Glavna ulica broj 7");
+
+        return user;
+    }
+
+    public static void registerUser(User u){
+        Storage.users.add(u);
     }
 }
