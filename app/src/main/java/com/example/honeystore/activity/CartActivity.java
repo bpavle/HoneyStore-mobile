@@ -10,12 +10,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.honeystore.R;
 import com.example.honeystore.data.ExtendedProduct;
@@ -32,8 +36,24 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         ArrayList<ExtendedProduct> cart = ((Storage)this.getApplication()).getCart();
-        if(!cart.isEmpty())
+        System.out.print(cart) ;
+        if (cart.isEmpty()) {
+            Toast.makeText(CartActivity.this, "Your cart is empty! ", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(CartActivity.this,MainActivity.class);
+            startActivity(intent);
+            return;
+        }
         packProducts(cart);
+
+
+
+
+
+
+
+
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.getMenu().setGroupCheckable(0, false, true);
@@ -74,10 +94,8 @@ public class CartActivity extends AppCompatActivity {
 
     public void packProducts(ArrayList<ExtendedProduct> list) {
         //ArrayList<Product> list = FakeApi.getProducts();
-        if (list.isEmpty()) {
-            return;
-        }
-        LinearLayout chairpersonScrollView = (LinearLayout) findViewById(R.id.cartScrollView);
+
+        LinearLayout scrollView = (LinearLayout) findViewById(R.id.cartScrollView);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         for (final ExtendedProduct p : list) {
@@ -88,9 +106,39 @@ public class CartActivity extends AppCompatActivity {
             ((TextView) cl.findViewById(R.id.productPrice)).setText(Double.toString( p.getPrice()));
             ((TextView) cl.findViewById(R.id.amountEditText)).setText((Integer.toString(p.getAmount())));
             ((TextView) cl.findViewById(R.id.totalPrice)).setText((Double.toString(p.getPrice()*p.getAmount())));
-            chairpersonScrollView.addView(cl);
-            chairpersonScrollView.addView(line);
+//            cl.setOnClickListener(v -> {
+//                Intent intent = new Intent(CartActivity.this,ProductDetailsActivity.class);
+//                intent.putExtra("productInfo",p);
+//                startActivity(intent);
+//            });
+
+            ((EditText)cl.findViewById(R.id.amountEditText)).addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String amountString =((EditText)findViewById(R.id.amountEditText)).getText().toString();
+
+                    System.out.println("AMOUNT JE "+amountString);
+                    int amount = (amountString.isEmpty() ? 0 : Integer.valueOf(amountString));
+
+                    ((TextView)findViewById(R.id.totalPrice)).setText(Double.toString(amount*p.getPrice()));
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+
+
+            scrollView.addView(cl);
+            scrollView.addView(line);
         }
+
 
     }
 }

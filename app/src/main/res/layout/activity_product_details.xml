@@ -38,7 +38,7 @@
                 android:gravity="left"
                 android:text="Product label"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="20sp"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/productImageView" />
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Neki veci info o proizvodu koji moze biti malko duzi"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/productLabel" />
 
@@ -57,7 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Product price"
-                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/details" />
 
@@ -70,9 +71,9 @@
                     android:id="@+id/amountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="Kolicina"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/productPrice" />
 
@@ -81,8 +82,8 @@
                     android:inputType="number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="1dp"
+                    android:textSize="18sp"
                     android:text="1"
                     app:layout_constraintStart_toEndOf="@id/amountTextView"
                     app:layout_constraintTop_toBottomOf="@id/productPrice" />
@@ -91,10 +92,10 @@
                     android:id="@+id/equalTextVIew"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="4dp"
                     android:text="="
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toEndOf="@id/amountEditText"
                     app:layout_constraintTop_toBottomOf="@id/productPrice" />
 
@@ -102,9 +103,10 @@
                     android:id="@+id/totalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
-                    android:layout_marginTop="8dp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toEndOf="@id/equalTextVIew"
                     app:layout_constraintTop_toBottomOf="@id/productPrice" />
             </LinearLayout>
