@@ -38,9 +38,9 @@ Mobile app is designed only for buyers who can add products to cart and place an
 <br />
 <p>Home page</p>
 
-<img src="screen_shots/home_view.jpeg   " alt="Main Activity" height="70%" width="70%">
+<img src="screen_shots/home_view.jpeg   " alt="Main Activity" width="40%">
 <p>Login</p>
-<img src="screen_shots/login_view.jpeg  " alt="Login Activity" height="70%" width="70%">
+<img src="screen_shots/login_view.jpeg  " alt="Login Activity" width="40%">
 
 
 
